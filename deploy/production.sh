@@ -6,10 +6,12 @@
 # echo "success!"
 
 #!/bin/bash
-npm install
+
 ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cd /var/www/timble-tiny-web && rm -rf ./api/*"
 scp -r -o StrictHostKeyChecking=no ./* deploy@178.128.22.245:/var/www/timble-tiny-web/api
+ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cd /var/www/timble-tiny-web/api && npm install"
 ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cd /var/www/timble-tiny-web/api && DEBUG='*' pm2 start src/index.js --name api"
+
 
 # set -e
 #   reset="\033[0m"
