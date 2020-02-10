@@ -8,6 +8,6 @@ const controller = require('../controllers/auth.controller')
 /* User Login */
 router.post('/login', controller.login)
 
-// router.get('/', controller.check)
+// router.get('/', controller.check);
 
 module.exports = router

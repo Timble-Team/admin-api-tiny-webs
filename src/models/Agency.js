@@ -22,6 +22,9 @@ const AgencySchema = new mongoose.Schema({
   users: [
     { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
   ],
+  deletedAt: { 
+    type: Date 
+  },
   createdAt: { 
     type: Date, required: true, default: Date.now 
   },

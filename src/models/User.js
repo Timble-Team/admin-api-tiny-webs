@@ -20,6 +20,9 @@ const UserSchema = new mongoose.Schema({
   adminType: {
     type: Number
   },
+  deletedAt: { 
+    type: Date 
+  },
   createdAt: { 
     type: Date, required: true, default: Date.now 
   },

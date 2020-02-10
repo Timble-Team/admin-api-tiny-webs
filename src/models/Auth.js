@@ -22,6 +22,9 @@ const AuthSchema = new mongoose.Schema({
   info: {
     type: Object
   },
+  deletedAt: { 
+    type: Date 
+  },
   createdAt: { 
     type: Date, required: true, default: Date.now 
   },

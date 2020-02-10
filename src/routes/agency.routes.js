@@ -10,6 +10,9 @@ const appController = require('../controllers/app.controller')
 // const Validation = require('./documentation/agencyApi')
 
 /* GET all agencys. */
+router.get('/all', controller.indexAll)
+
+/* GET all public agencys. */
 router.get('/', controller.index)
 
 /* Show a agency. */
@@ -23,5 +26,7 @@ router.put('/:id', controller.handleYourSelf, controller.update)
 
 /* Delete a agency. */
 router.delete('/:id', controller.delete)
+
+router.delete('/:id/soft', controller.softDelete)
 
 module.exports = router

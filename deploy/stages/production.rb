@@ -1,5 +1,5 @@
 # roles
-role :app, %w(root@178.128.126.186)
+role :app, %w(deploy@178.128.22.245)
 
 # ssh
 set :ssh_options,
@@ -10,6 +10,6 @@ set :ssh_options,
     auth_methods: %w(publickey password)
 
 # server
-server '178.128.126.186',
+server '178.128.22.245',
     user: 'root',
     roles: %w(app)

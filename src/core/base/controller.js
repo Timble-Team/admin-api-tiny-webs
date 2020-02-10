@@ -25,15 +25,20 @@ module.exports = (model) => {
         return `${model} works`
       }),
       index: asyncMiddleware(async (req, res, next) => {
-        let cond = {}
-        if (req.headers['agency-id']) {
-          cond = { agency_id: req.headers['agency-id'] }
-        } else if (req.info.team_id) {
-          cond = { agency_id: req.info.team_id }
-        }
-        const queryCond = req.query
-        cond = {...cond, ...queryCond}
-        const cars = await obj[model].find(cond)
+        const options = {
+          ...req.query,
+          deletedAt: { $eq:null },
+          public: true
+        };
+        const cars = await obj[model].find(options)
+        return cars
+      }),
+      indexAll: asyncMiddleware(async (req, res, next) => {
+        const options = {
+          ...req.query,
+          deletedAt: { $eq:null },
+        };
+        const cars = await obj[model].find(options)
         return cars
       }),
       show: asyncMiddleware(async (req, res, next) => {
@@ -43,12 +48,7 @@ module.exports = (model) => {
       }),
       new: asyncMiddleware(async (req, res, next) => {
         const objectModel = obj[model]
-        let ownerInfo = {
-          agency_id: req.info.team_id,
-          user_id: req.user.id
-        }
-        let payload = { ...req.body, ...ownerInfo }
-        const item = new objectModel(payload)
+        const item = new objectModel(req.body)
         return item.save()
       }),
       update: asyncMiddleware(async (req, res, next) => {
@@ -67,6 +67,10 @@ module.exports = (model) => {
       delete: asyncMiddleware(async (req, res, next) => {
         const id = req.params.id
         return await obj[model].findOneAndRemove({ _id: id, agency_id: req.info.team_id })
+      }),
+      softDelete: asyncMiddleware(async (req, res, next) => {
+        const id = req.params.id
+        return await obj[model].findOneAndUpdate({ _id: id }, { deletedAt: new Date() })
       })
     }
   }

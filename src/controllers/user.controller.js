@@ -1,6 +1,8 @@
 const constructor = require('../core/base/controller')
 let { actions, asyncMiddleware, model } = constructor('User')
 let { model: AuthModel } = constructor('Auth')
+let { model: AgencyModel } = constructor('Agency')
+
 
 
 /**
@@ -16,9 +18,15 @@ actions.new = asyncMiddleware(async (req, res, next) => {
     adminType: 1
   }
   if (req.body.agencyId) {
-    user[agencies]= [req.body.agencyId];
+    user['agencies']= [req.body.agencyId]
   }
   const userRes = await new model(user).save()
+  if (req.body.agencyId) {
+    const agency = await AgencyModel.findOneAndUpdate(
+      { _id: req.body.agencyId }, 
+      { $push: { users: userRes._id } }
+    );
+  }
   // Do what needs to be done and then:
   const auth = new AuthModel({
     provider: 'email',
@@ -28,14 +36,16 @@ actions.new = asyncMiddleware(async (req, res, next) => {
     avatar: null,
     info: null
   })
-  return await AuthModel.saveAuth(auth);
+  return await AuthModel.saveAuth(auth)
 })
 
 
 moreFunction = {
   aboutMe: asyncMiddleware(async (req, res, next) => {
-    let user = await User.findOne({_id: req.user.id});
-    let agencies = await User.find({users: req.user.id});
+    let user = await model.findOne({_id: req.user.id});
+    let agencies = await AgencyModel.find({
+      users: req.user.id
+    });
     return {user, agencies}
   }),
   editMe: asyncMiddleware(async (req, res, next) => {
