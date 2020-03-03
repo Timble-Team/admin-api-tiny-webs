@@ -17,10 +17,10 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - checkout
       - add_ssh_keys:
           fingerprints:
             - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
-      - checkout
       - run:
           name: Deploying
           command: |
@@ -39,10 +39,10 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - checkout
       - add_ssh_keys:
           fingerprints:
             - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
-      - checkout
       - run:
           name: Deploying
           command: |
