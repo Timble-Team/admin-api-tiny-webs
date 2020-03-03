@@ -3,12 +3,16 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+references:
+  add_blueprints: &add_blueprints
+    - add_ssh_keys:
+      fingerprints:
+        - "9e:b1:8d:16:84:ae:8e:2b:e3:e6:33:fc:68:c0:a0:32"
 jobs:
   test_and_build:
     docker:
       # specify the version you desire here
       - image: circleci/node:11.9.0-stretch-browsers
-
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -18,8 +22,9 @@ jobs:
 
     steps:
       - checkout
+      - <<: *add_blueprints
       - run:
-          name: checkstyle comments
+          name: Deploying
           command: |
             sh ./deploy/develop.sh
 
@@ -37,8 +42,9 @@ jobs:
 
     steps:
       - checkout
+      - <<: *add_blueprints
       - run:
-          name: checkstyle comments
+          name: Deploying
           command: |
             sh ./deploy/production.sh
 
