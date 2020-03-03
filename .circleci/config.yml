@@ -4,7 +4,7 @@
 #
 version: 2
 references:
-  add_blueprints:
+  add_blueprints: &add_blueprints
     - add_ssh_keys:
       fingerprints:
         - "9e:b1:8d:16:84:ae:8e:2b:e3:e6:33:fc:68:c0:a0:32"
