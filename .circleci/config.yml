@@ -44,7 +44,7 @@ jobs:
 
 workflows:
   version: 2
-  revamp_staff_app_frontend_workflow:
+  timble_management_backend_workflow:
     jobs:
       - test_and_build:
           filters:
