@@ -19,7 +19,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "9e:b1:8d:16:84:ae:8e:2b:e3:e6:33:fc:68:c0:a0:32"
+            - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
       - checkout
       - run:
           name: Deploying
@@ -41,7 +41,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "9e:b1:8d:16:84:ae:8e:2b:e3:e6:33:fc:68:c0:a0:32"
+            - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
       - checkout
       - run:
           name: Deploying
