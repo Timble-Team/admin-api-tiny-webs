@@ -11,7 +11,7 @@ ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cd /var/www/timble-tiny-w
 scp -r -o StrictHostKeyChecking=no ./* deploy@178.128.22.245:/var/www/timble-tiny-web/api.dev
 ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cd /var/www/timble-tiny-web/api.dev && npm install"
 ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cp /var/www/timble-tiny-web/env/dev/.env /var/www/timble-tiny-web/api.dev"
-ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cd /var/www/timble-tiny-web/api.dev && DEBUG='*' pm2 start src/index.js --name api.dev"
+ssh -o StrictHostKeyChecking=no deploy@178.128.22.245 "cd /var/www/timble-tiny-web/api.dev && DEBUG='*' pm2 restart src/index.js --name api.dev"
 
 
 # set -e
