@@ -3,7 +3,7 @@
 # echo ${CIRCLE_TAG}
 # mkdir /abc
 
-# echo "success!"
+echo "success!"
 
 #!/bin/bash
 

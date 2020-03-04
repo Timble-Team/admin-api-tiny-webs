@@ -20,7 +20,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "80:5e:66:28:cd:e8:18:6d:8e:d5:4a:06:fe:d9:9e:bc"
+            - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
       - run:
           name: checkstyle comments
           command: |
@@ -42,7 +42,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "80:5e:66:28:cd:e8:18:6d:8e:d5:4a:06:fe:d9:9e:bc"
+            - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
       - run:
           name: checkstyle comments
           command: |
