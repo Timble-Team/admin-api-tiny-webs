@@ -20,7 +20,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
+            - "3c:b9:8b:ca:39:7a:dc:f5:5c:fa:50:1d:64:9e:e8:89"
       - run:
           name: checkstyle comments
           command: |
@@ -42,7 +42,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "87:ac:4f:2e:47:00:e7:bb:81:f1:24:86:86:30:1e:13"
+            - "3c:b9:8b:ca:39:7a:dc:f5:5c:fa:50:1d:64:9e:e8:89"
       - run:
           name: checkstyle comments
           command: |
@@ -50,7 +50,7 @@ jobs:
 
 workflows:
   version: 2
-  revamp_staff_app_frontend_workflow:
+  BE_timble_workflow:
     jobs:
       - test_and_build:
           filters:
