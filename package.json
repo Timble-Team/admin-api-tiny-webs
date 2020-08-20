@@ -14,7 +14,7 @@
   "author": "Quan Do H. <dhquan1910@gmail.com> (www.unidev.vn)",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cluster": "^0.7.7",
     "cookie-parser": "^1.4.4",
